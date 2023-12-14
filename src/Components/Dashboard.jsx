@@ -37,7 +37,7 @@ function Dashboard() {
       });
       if (request.data.status === 200) {
         window.localStorage.setItem("refresh-token", request.data.refresh);
-        window.localStorage.setItem("app-token", request.data.access);
+        window.localStorage.setItem("access-token", request.data.access);
         await getData();
       }
       if (request.data.status === 401) {
@@ -52,7 +52,7 @@ function Dashboard() {
     try {
       const request = await axios.delete(`${url}/delete/user/${id}`, {
         headers: {
-          Authorization: window.localStorage.getItem("app-token"),
+          Authorization: window.localStorage.getItem("access-token"),
         },
       });
       if (request.data.status === 200) {
