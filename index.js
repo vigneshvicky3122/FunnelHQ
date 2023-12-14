@@ -166,8 +166,22 @@ app.post("/new/token", async (req, res) => {
       token: req.body.refresh_token,
     }).toArray();
     if (token.length === 1) {
-      let verify = await refreshVerifyToken(token[0].token);
-      if (verify) {
+      let verify = await refreshVerifyToken({
+        token: token[0].token,
+        email: token[0].email,
+        name: token[0].name,
+      });
+      let insert = await Collection.findOneAndUpdate(
+        {
+          email: token[0].email,
+        },
+        {
+          $set: {
+            token: verify.newRefreshToken,
+          },
+        }
+      );
+      if (insert && verify.check) {
         let access = await createToken({
           email: token[0].email,
         });
@@ -175,6 +189,7 @@ app.post("/new/token", async (req, res) => {
           res.json({
             status: 200,
             access,
+            refresh: verify.newRefreshToken,
           });
         }
       }
