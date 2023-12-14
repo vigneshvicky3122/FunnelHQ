@@ -36,6 +36,7 @@ function Dashboard() {
         refresh_token: window.localStorage.getItem("refresh-token"),
       });
       if (request.data.status === 200) {
+        window.localStorage.setItem("refresh-token", request.data.refresh);
         window.localStorage.setItem("app-token", request.data.access);
         await getData();
       }
