@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { clientId, url } from "../App";
 import axios from "axios";
@@ -71,7 +71,7 @@ function SignUp() {
         <form onSubmit={formik.handleSubmit}>
           <div className="mb-6">
             <label
-              for="name"
+              htmlFor="name"
               className="block text-gray-700 font-semibold mb-2"
             >
               Name
@@ -92,7 +92,7 @@ function SignUp() {
           </div>
           <div className="mb-4">
             <label
-              for="email"
+              htmlFor="email"
               className="block text-gray-700 font-semibold mb-2"
             >
               Email
@@ -114,7 +114,7 @@ function SignUp() {
           </div>
           <div className="mb-4">
             <label
-              for="password"
+              htmlFor="password"
               className="block text-gray-700 font-semibold mb-2"
             >
               Password

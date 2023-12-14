@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { gapi } from "gapi-script";
 export const url = import.meta.env.VITE_BACKEND_URL;
 export const clientId = import.meta.env.VITE_CLIENT_ID;
-console.log(clientId);
 function App() {
   useEffect(() => {
     function start() {

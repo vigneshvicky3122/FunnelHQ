@@ -9,7 +9,6 @@ import * as yup from "yup";
 function SignIn() {
   const navigate = useNavigate();
   const responseSuccess = async (response) => {
-    console.log(response);
     await handleSubmit({
       name: response.profileObj.name,
       email: response.profileObj.email,
@@ -65,7 +64,7 @@ function SignIn() {
         <form onSubmit={formik.handleSubmit}>
           <div className="mb-4">
             <label
-              for="email"
+              htmlFor="email"
               className="block text-gray-700 font-semibold mb-2"
             >
               Email
@@ -87,7 +86,7 @@ function SignIn() {
           </div>
           <div className="mb-6">
             <label
-              for="password"
+              htmlFor="password"
               className="block text-gray-700 font-semibold mb-2"
             >
               Password
